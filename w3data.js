@@ -1,4 +1,156 @@
 /* W3Data ver 1.1 by W3Schools.com */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var w3DataObject = {};
 function w3DisplayData(id, data) {
     var htmlObj, htmlTemplate, html, arr = [], a, l, rowClone, x, j, i, ii, cc, repeat, repeatObj, repeatX = "";
@@ -115,15 +267,12 @@ function w3IncludeHTML() {
   var z, i, a, file, xhttp;
   z = document.getElementsByTagName("*");
   for (i = 0; i < z.length; i++) {
-    document.getElementById("demo").innerHTML = i;
     if (z[i].getAttribute("w3-include-html")) {
       a = z[i].cloneNode(false);
       file = z[i].getAttribute("w3-include-html");
-      document.getElementById("demo").innerHTML= file;
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-          document.getElementById("demo").innerHTML = "ohla!!!"
           a.removeAttribute("w3-include-html");
           a.innerHTML = xhttp.responseText;
           z[i].parentNode.replaceChild(a, z[i]);
