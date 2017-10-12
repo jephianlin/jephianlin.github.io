@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+\pagestyle{empty}
+\usepackage{hyperref}
+\usepackage[top=1 in, bottom=1 in,left=1 in,right=1 in]{geometry}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{etaremune}
+\usepackage{alphalph} %% count using alph
+
+\usepackage{bibunits} %% so that can include two references using bibtex
+%% This make the aux name by \jobname instead of bu.
+\makeatletter
+\renewcommand{\@bibunitname}{\jobname.\the\@bibunitauxcnt}
+\makeatother
+
+\usepackage{color}
+\definecolor{red}{rgb}{1,0,0}
+\def\red{\color{red}}
+
+%\linespread{1.2}
+\parindent=0pt
+
+%%%New Environments
+\newenvironment{nobulletlist}{\begin{itemize}[leftmargin=1em,label=]}{\end{itemize}}
+
+%%%Commands
+\def \heading#1{\vspace{3pt}\large{\sffamily{\textbf{#1}}}\vspace{-8pt}}
+
+%% Remove References
+%% Careful: \section is redefined globally
+\renewcommand{\section}[2]{}
+
+\begin{document}
+\centerline{\LARGE\bf (Jephian) Chin-Hung Lin}
+%\centerline{\LARGE\bf Chin-Hung (Jephian) Lin}
+\begin{small}
+\begin{multicols}{2}
+Phone: (+1)307-314-9275
+
+Email: \href{mailto:chinhunglin@uvic.ca}{chinhunglin@uvic.ca}
+
+\href{http://jephianlin.github.io/}{http://jephianlin.github.io/}
+\columnbreak
+\begin{flushright}
+Department of Mathematics and Statistics
+
+University of Victoria
+
+Victoria, BC V8W 2Y2, Canada
+\end{flushright}
+\end{multicols}
+\end{small}
+\rule[3ex]{\textwidth}{.258ex}
+
+\vspace{-3pt}
+\heading{EDUCATION}
+
+\begin{nobulletlist}
+\item \textbf{2017} Ph.D., Mathematics, Iowa State University (ISU)
+\begin{nobulletlist}
+\item Advisor: Leslie Hogben \& Steve Butler
+%\item Thesis: Variants of zero forcing and their applications to the minimum rank problem
+\end{nobulletlist}
+\item \textbf{2011} M.S., Mathematics, National Taiwan University (NTU)
+\begin{nobulletlist}
+\item Advisor: Gerard Jennhwa Chang
+%\item Thesis: Applications of zero forcing number to the minimum rank problem
+\end{nobulletlist}
+\item \textbf{2009} B.S., Mathematics, National Taiwan Normal University (NTNU)
+\end{nobulletlist}
+
+\heading{RESEARCH INTERESTS}
+
+\begin{nobulletlist}
+\item Algebraic graph theory; combinatorics; the inverse eigenvalue problem; quantum information.
+\end{nobulletlist}
+
+\heading{EMPLOYMENT/FELLOWSHIPS}
+
+\begin{nobulletlist}
+\item \textbf{2017--present} Post-doctoral fellow, University of Victoria (UVic)
+\item \textbf{2016 Spring} Wolfe fellowship, ISU
+%\item \textbf{2015 Summer} Research Assistant, NCTS/TPE 
+\item \textbf{2014 Fall} Long-term visitor, Institute of Mathematics and its Application (IMA)
+%\begin{nobulletlist}
+%\item Annual Program (Discrete Structures: Analysis and Applications)
+%\end{nobulletlist}
+%\item \textbf{2014 Summer} Research Assistant, NCTS/TPE 
+\item \textbf{2013--2017} Teaching/research assistant, ISU
+\item \textbf{2012--2013} Research assistant, The National Center for Theoretical Sciences, Taipei Office (NCTS/TPE)
+\item \textbf{2009--2011} Teaching/research assistant, NTU
+\end{nobulletlist}
+
+\heading{HONORS}
+
+\begin{nobulletlist}
+\item \textbf{2017} Zaffarano Prize for Graduate Student Research, ISU
+\item \textbf{2016} Graduate college research excellence award, ISU
+\item \textbf{2016} Graduate college teaching excellence award, ISU
+\item \textbf{2013--2016} Government scholarship, Ministry of Education, Taiwan
+\item \textbf{2011} Excellent thesis award, Symposium for Young Combinatorists, Taiwan
+\item \textbf{2010} Scholarship of Mr.~Dun-Fu Hu, NTU 
+\item \textbf{2005--2008} Excellent student scholarship, NTNU
+\end{nobulletlist}
+
+\newpage 
+\heading{PUBLICATIONS}
+
+\begin{nobulletlist}
+\item \textsc{Appeared/Accepted}
+
+\begingroup
+%%% Revise the bibliography environment to equipe etaremune.
+\makeatletter
+\long\def\thebibliography#1{%
+  %\section*{\refname}%
+  \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}
+  \settowidth{\dimen0}{\@biblabel{#1}}%
+  \setlength{\dimen2}{\dimen0}%
+  \addtolength{\dimen2}{\labelsep}
+  \sloppy
+  \clubpenalty 4000 
+  \@clubpenalty 
+  \clubpenalty 
+  \widowpenalty 4000
+  \sfcode `\.\@m
+  \renewcommand{\labelenumi}{\@biblabel{\theenumi}} % labels like [3], [2], [1]
+  \begin{etaremune}[labelwidth=\dimen0,leftmargin=\dimen2]\@openbib@code
+}
+\def\endthebibliography{\end{etaremune}}
+%%% This change the bibitem label to number period
+\def\@bibitem#1{%
+  \item \if@filesw\immediate\write\@auxout{\string\bibcite{#1}{\the\value{enumi}}}\fi\ignorespaces
+} %\the\value{enumi} tells the number of \cite{#1}
+\def\@biblabel#1{#1.} %This part make the label as arabic with a period.
+\makeatother
+
+\begin{bibunit}[unsrt]
+\nocite{gSAP,ZPropDi,entropy,Zsap,RAP,GRWCds2,Zoc,loopEGR,sieving,GJ14,FCnumbers}
+\putbib[./JLaTeX/AuthorA,./JLaTeX/JournalA,./JLaTeX/JepBib]
+\end{bibunit}
+\endgroup
+
+\item \textsc{Submitted}
+
+\begingroup
+%% This change the bibitem label to alph period
+\makeatletter
+\def\@bibitem#1{\item\if@filesw \immediate\write\@auxout
+  {\string\bibcite{#1}{\alphalph{\value{\@listctr}}}}\fi\ignorespaces} %\the\value{enumi} tells the number of \cite{#1}
+\def\@biblabel#1{\alphalph{#1}.} %This part deal with the label in References.
+\makeatother
+
+\begin{bibunit}[unsrt]
+\nocite{ZCritical, FKpriori, maxcrt, IEPG2, ZGrundy, MultiNG, GRWCds1, GJpower}
+\putbib[./JLaTeX/AuthorA,./JLaTeX/JournalA,./JLaTeX/JepBib]
+\end{bibunit}
+\endgroup 
+
+\end{nobulletlist}
+
+
+%% This change the bibitem label to no label 
+\makeatletter
+\def\@biblabel#1{}
+\makeatother
+
+\heading{PRESENTATIONS}
+
+\begin{nobulletlist}
+\item \textsc{Plenary Lectures}
+
+\begingroup
+\begin{bibunit}[unsrt]
+\nocite{AIM2017talk}
+\putbib[./JLaTeX/JepTalks]
+\end{bibunit}
+\endgroup
+
+\item \textsc{Invited for Special Sessions/Mini Symposia}
+
+\begingroup
+\begin{bibunit}[unsrt]
+\nocite{JMM2018,AMSMinneapolis2016, TWSC2016, ILAS2016, AMSFargo2016, Boca2016, ILAS2014}
+\putbib[./JLaTeX/JepTalks]
+\end{bibunit}
+\endgroup
+ 
+\item \textsc{Contributed}
+
+\begingroup
+\begin{bibunit}[unsrt]
+\nocite{ILAS2017,GSCC2017,JMM2017,WCLAM2016, ConnectionDM2015, 
+%ISU2015, 
+Boca2014, 
+%ISU2013, 
+TWSC2011, AMTMS2009}
+\putbib[./JLaTeX/JepTalks]
+\end{bibunit}
+\endgroup
+\end{nobulletlist}
+
+\heading{WORKSHOPS/PROGRAMS/CONFERENCES}
+
+\begingroup
+%% This change the bibitem label to no label with a small space
+\makeatletter
+\def\@biblabel#1{{\color{white}ab}}  %$\bullet$
+\makeatother
+
+\begin{bibunit}[unsrt]
+\nocite{AMSMRC2017,AIM2017, BIRS2016, Chattanooga2016, NetworkedLife2016, Barcelona2015, GRWC2015, IMAGE2014, IMAAA2014, IMAPE2014, Sinica2009, APMO2004}
+\putbib[./JLaTeX/JepTalks]
+\end{bibunit}
+\endgroup
+
+\heading{TEACHING EXPERIENCE (Sole Instructor)}
+\begin{nobulletlist}
+\item \textbf{2017} Calculus for Students in the Social and Biological Sciences
+\item \textbf{2016} Calculus I
+\end{nobulletlist}
+
+\heading{TEACHING ASSISTANT}
+\begin{nobulletlist}
+\item \textbf{2017} Enumerative Combinatorics
+\item \textbf{2015} Modern Graph Theory
+\item \textbf{2015} Calculus III
+\item \textbf{2015} Calculus for Business and Social Sciences
+\end{nobulletlist}
+
+%\end{large}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%REAL END%%%%%%%%%%%%%%%%%%%%%%
+
+
+%revised 2016-0930
+%change to BibTex 2015-0914
+
+%original command: pdflatex -synctex=1 -interact=nonstopmode 'active-CV.tex'
+%sagemathcloud={"latex_command":"pdflatex active-CV.tex; bibtex active-CV.1.aux; bibtex active-CV.2.aux; bibtex active-CV.3.aux; bibtex active-CV.4.aux; bibtex active-CV.5.aux; bibtex active-CV.6.aux; pdflatex -synctex=1 -interact=nonstopmode 'active-CV.tex'"}
