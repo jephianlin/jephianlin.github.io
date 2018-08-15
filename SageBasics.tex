@@ -1,0 +1,266 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\setlength\columnsep{1cm}
+\usepackage{siunitx}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+\usepackage{menukeys}
+\renewmenumacro{\keys}[+]{shadowedangularkeys} %this package has confliction with TikZ "every node" styling
+\usepackage{stackengine}
+\def\stackalignment{l}
+
+\usepackage{sagetex}
+
+
+% for drawing graphs
+\usepackage{tikz}
+\tikzset{every picture/.style={thick}}
+%\tikzset{every node/.style={draw, circle, inner sep = 2pt}}
+\usetikzlibrary{arrows}
+
+% for margins
+\usepackage[margin=0.5in]{geometry}
+
+% for font
+\usepackage{euler}
+\usepackage[OT1]{eulervm}
+\renewcommand{\rmdefault}{pplx}
+
+\setlength{\parindent}{0pt}  %no indenting
+
+% for title
+\title{Sage Basics}
+\author{Jephian Lin\hspace{2cm}\today}
+\date{\vspace{-1cm}}
+
+\setlist[description]{font=\normalfont}
+\newcommand{\heading}[1]{\medskip\textbf{#1}.}
+\newenvironment{lwdes}{\begin{description}[leftmargin=1.7cm,align=left,labelwidth=1.5cm]}{\end{description}}
+
+\begin{document}
+\maketitle
+
+\large
+
+\begin{multicols}{2}
+\heading{Python\&SageMath}  Python is a programming language.  Because it is flexible for various purpose and easy to use, Python is a popular choice.  SageMath is a open-source mathematics software built on Python and stands for ``System for Algebra and Geometry Experimentation''.  It provides plenty of functions for mathematical computation and research.
+
+\heading{How to install}  CoCalc is an online platform for Linux, \LaTeX{}, Python, Sage, R, etc.  It is free, but you may subscribe to get better performance.  You may experience the power of programming on CoCalc without the hassle of installation.  Links to their websites are as below.
+\begin{center}
+\href{https://cocalc.com/}{CoCalc}
+\hfil
+\href{https://www.python.org/}{Python}
+\hfil
+\href{http://www.sagemath.org/}{SageMath}
+\end{center}
+Registered an account on CoCalc, create a project, and create a Sage worksheet.  Then embrace the wonder of Sage!
+
+\heading{Your best friends}
+\begin{lwdes}
+\item[\stackanchor{\keys{shift}}{+\keys{enter}}] evaluate the cell
+\item[\keys{tab}] autocomplete or show the possible completions
+\item[\textit{object}\texttt{.}] press \texttt{tab} to see functions under \textit{object}
+\item[\textit{func}\texttt{?}] evaluate this line to read the document of \textit{func}
+\item[\textit{func}\texttt{??}] evaluate this line to read the source code of \textit{func} 
+\item[Google] the answers are likly available online or in \href{https://doc.sagemath.org/html/en/reference/}{Sage Reference Manual}
+\end{lwdes}
+
+\heading{Assign a value}
+\begin{lwdes}
+\item[\texttt{a = 1}] set the value of \texttt{a} as \texttt{1}
+\end{lwdes}
+
+\heading{Print}
+Run \texttt{print a} or \texttt{print(a)} to print the value of \texttt{a}.  Python 3 only accept the second syntax.
+
+\heading{Data types}
+\begin{lwdes}
+\item[\texttt{int}] integers, such as \texttt{2}, \texttt{3}, \texttt{5}, $\ldots$\\
+in Sage \texttt{Integer} is more common
+\item[\texttt{str}] strings, such as \texttt{"235"}
+\item[\texttt{bool}] boolean value, namely, \texttt{True} and \texttt{False}
+\item[\texttt{tuple}] tuples, such as \texttt{(2,3,5)}
+\item[\texttt{list}] lists, such as \texttt{[2,3,5]}
+\item[\texttt{dict}] dictionaries, such as \\\texttt{\{"two":2,"three":3,"five":5\}} \\defined by \texttt{\{\textit{key}:\textit{value}\}}
+\item[\texttt{type(a)}] return the type of \texttt{a}
+\end{lwdes}
+
+\heading{Boolean tests}
+\begin{lwdes}
+\item[\texttt{in}] \texttt{1 in [2,3,5]} returns \texttt{False}
+\item[\texttt{not in}] \texttt{1 not in [2,3,5]} returns \texttt{False}
+\item[relation] \texttt{2==3} returns \texttt{False}\\
+options: \texttt{>}, \texttt{>=}, \texttt{<}, \texttt{>=}, and \texttt{!=}\\
+\texttt{!=} means not equal
+\item[\texttt{isinstance}] check the type\\
+\texttt{isinstance("235",str)} returns \texttt{True}
+\end{lwdes}
+
+\heading{Arithmetic operators}
+\begin{lwdes}
+\item[\texttt{+-*/}] addition, subtraction, and multiplication, division
+\item[\texttt{**} or \texttt{\textasciicircum}] exponent, \texttt{**} for Python, \texttt{\textasciicircum} for Sage\\
+\texttt{2\textasciicircum3} returns 8
+\item[\texttt{\%}] modulus, \texttt{23\%4} returns \texttt{3}
+\item[\texttt{\slash\slash}] floor division, \texttt{15\slash\slash4} returns \texttt{5} 
+\end{lwdes}
+
+\heading{Layout}  Line breaks and indents are both sensitive in Python.  Conventionally, an indent is four spaces.  On CoCalc, I suggest go to ``Account'' and check the box of ``Spaces instead of tabs''.  If you put several commands in a line, then use semi-colons \texttt{;} to separate them.  Otherwise, semi-colons are optional.
+
+\heading{The \texttt{if} statement}  The following code decides the letter grade of the input \texttt{score}.
+
+\begin{verbatim}
+score = 90;
+if score >= 80 and score <= 100:
+    print "A";
+elif score >= 70 and score <80:
+    print "B";
+elif score >= 60 and score <70:
+    print "C";
+elif score >= 0 and score <60:
+    print "D"
+else:
+    print "Input score not valid"
+\end{verbatim}
+
+\heading{The \texttt{for} loop}  The following code prints the positive integers less than or equal to $100$ that is a multiple of $5$ or $7$.
+
+\begin{verbatim}
+for i in range(1,101):
+    if i%5==0 or i%7==0:
+        print i;
+\end{verbatim}
+
+You may use \texttt{generator} or \texttt{list}
+\begin{lwdes}
+\item[\texttt{range(b)}] return the list $0,1,\ldots,b-1$.
+\item[\texttt{range(a,b)}] return the list $a,a+1,\ldots,b-1$
+\item[\texttt{TreeIterator(n)}] a generator of trees on $n$ vertices, run the next line first\\
+\makebox[\linewidth][r]{\texttt{from sage.graphs.trees import TreeIterator}}
+\end{lwdes}
+
+\heading{The \texttt{while} loop}  The following code is a primitive way to find the least common multiple of $5$ and $7$.
+
+\begin{verbatim}
+i=1;
+while True:
+    if i%5==0 and i%7==0:
+        print i;
+        break;
+    else:
+        i=i+1;
+\end{verbatim}
+
+Here \texttt{break} means to stop the loop.
+
+\heading{Define a function}  The following function will return  the $\sum_{k=1}^n k^p$.
+
+\begin{verbatim}
+def power_sum(n,p,summand=False):
+    total=0;
+    for k in range(1,n+1):
+        total += k^p;
+        if summand:
+            print k^p;
+    return total;
+\end{verbatim}
+
+Thus, \verb|power_sum(10,1)| returns $55$.  The variable \texttt{summand} has a default value \texttt{False} so it is optional; when it is \texttt{True}, the function will print the summands.  For example, \verb|power_sum(10,2,True)| will print $1,4,9,\ldots$ and then return $385$.
+
+% *arg and **kwarg
+
+\heading{Call values}
+\begin{lwdes}
+\item[\texttt{f(a,b)}] return the value of the function \texttt{f} with given inputs \texttt{a} and \texttt{b}
+\item[\texttt{L[k]}] return the value of the $k$-th element in the list \texttt{L}
+\item[\texttt{D[k]}] return the value that corresponding the the key \texttt{k} in the dictionary \texttt{D}
+\end{lwdes}
+
+\heading{Shorthand and string formatting}
+
+\begin{obeylines}
+\verb|[k^2 for k in range(6) if k%2==1]|
+means\hfill \verb|[1,9,25]|
+\verb|{k:k^2 for k in range(6) if k%2==1}|
+means\hfill \verb|{1:1,3:9,5:25]|
+\verb|n=5; print "%s+1=%s"%(n,n+1);|
+prints\hfill \verb|5+1=6|
+\verb|n=5; print "{0}+1={1}".format(n,n+1);|
+prints\hfill \verb|5+1=6|
+\end{obeylines}
+
+\heading{Sublist}
+Suppose \texttt{a=[1,2,3,4,5]}.
+\begin{lwdes}
+\item[\texttt{a[-2]}] returns \texttt{4}
+\item[\texttt{a[2:-2]}] returns \texttt{[2,3,4]}
+\end{lwdes}
+
+\heading{Matrix}
+To assign 
+\[M=\begin{bmatrix}0&1&2\\3&4&5\end{bmatrix},\]
+\begin{obeylines}
+the following two lines do the same work.
+\verb|M=matrix([[0,1,2],[3,4,5]])|
+\verb|M=matrix(2,range(6))|
+\end{obeylines}
+
+Suppose $M$ is this given matrix.
+\begin{lwdes}
+\item[\texttt{M[i,j]}] returns the $i,j$-entry
+\item[\texttt{M[[0,1],[1,2]]}] returns the submatrix induced on rows indexed by \texttt{[0,1]} and columns indexed by \texttt{[1,2]}.
+\item[\texttt{M[[1],:]}] returns the row with index \texttt{1}
+\item[\texttt{M[:,[2]]}] returns the column with index \texttt{2}
+\end{lwdes}
+
+\heading{Graph}  To assign $G=K_{2,3}$, each of the following three lines achieve the task, but only the first line assign the positions of the vertices.  (Try \texttt{G.show()} to see the difference.)
+\begin{obeylines}
+\verb|G=graphs.CompleteBipartiteGraph(2,3)|
+\verb|G=Graph({0:[2,3,4],1:[2,3,4]})|
+\verb|G=Graph("D]o")|
+\end{obeylines}
+Here \texttt{"D]o"} is the graph6 string of $K_{2,3}$.
+
+Use \href{http://pallini.di.uniroma1.it/}{\texttt{nauty}} to search graphs.  The following code prints the graph6 string for all connected graphs on $4$ vertices.
+\begin{verbatim}
+n=4;
+for g in graphs.nauty_geng("%s -c"%n):
+    print g.graph6_string();
+\end{verbatim}
+
+You may check the isomorphism by first giving them a ``standard'' labeling and then compare their string.  The following code check if \texttt{G} and \texttt{H} are isomorphic.
+\begin{verbatim}
+stg_G=G.canonical_label().graph6_string();
+stg_H=H.canonical_label().graph6_string();
+stg_G==stg_H
+\end{verbatim}
+
+\end{multicols}
+
+\end{document}
+
+%%% SageTex example
+Using Sage\TeX, one can use Sage to compute things and put them into
+your \LaTeX{} document. For example, there are
+$\sage{number_of_partitions(1269)}$ integer partitions of $1269$.
+You don't need to compute the number yourself, or even cut and paste
+it from somewhere.
+
+Here's some Sage code:
+
+\begin{sageblock}
+    f(x) = exp(x) * sin(2*x)
+\end{sageblock}
+
+The second derivative of $f$ is
+
+\[
+  \frac{\mathrm{d}^{2}}{\mathrm{d}x^{2}} \sage{f(x)} =
+  \sage{diff(f, x, 2)(x)}.
+\]
+
+Here's a plot of $f$ from $-1$ to $1$:
+
+\sageplot{plot(f, -1, 1)}
