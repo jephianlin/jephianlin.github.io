@@ -21,7 +21,7 @@
 \usetikzlibrary{arrows}
 
 % for margins
-\usepackage[margin=0.5in]{geometry}
+\usepackage[left=0.5in, right=0.5in, top=0.8in, bottom=0.8in]{geometry}
 
 % for font
 \usepackage{euler}
@@ -29,6 +29,7 @@
 \renewcommand{\rmdefault}{pplx}
 
 \setlength{\parindent}{0pt}  %no indenting
+
 
 % for title
 \title{Sage Basics}
@@ -45,9 +46,9 @@
 \large
 
 \begin{multicols}{2}
-\heading{Python\&SageMath}  Python is a programming language.  Because it is flexible for various purpose and easy to use, Python is a popular choice.  SageMath is a open-source mathematics software built on Python and stands for ``System for Algebra and Geometry Experimentation''.  It provides plenty of functions for mathematical computation and research.
+\heading{Python\&SageMath}  Python is a programming language.  It is easy to use and flexible for various purposes.  SageMath is an open-source mathematics software built on Python and stands for ``System for Algebra and Geometry Experimentation''.  It provides plenty of functions for mathematical computation and research.
 
-\heading{How to install}  CoCalc is an online platform for Linux, \LaTeX{}, Python, Sage, R, etc.  It is free, but you may subscribe to get better performance.  You may experience the power of programming on CoCalc without the hassle of installation.  Links to their websites are as below.
+\heading{How to install}  CoCalc is an online platform for Linux, \LaTeX{}, Python, Sage, R, etc.  It is free, but you may subscribe to get better performance.  Use CoCalc to experience the power of programming first.  
 \begin{center}
 \href{https://cocalc.com/}{CoCalc}
 \hfil
@@ -55,7 +56,7 @@
 \hfil
 \href{http://www.sagemath.org/}{SageMath}
 \end{center}
-Registered an account on CoCalc, create a project, and create a Sage worksheet.  Then embrace the wonder of Sage!
+Register an account of CoCalc, create a project, and create a Sage worksheet.  Then embrace the wonder of SageMath!
 
 \heading{Your best friends}
 \begin{lwdes}
@@ -74,16 +75,17 @@ Registered an account on CoCalc, create a project, and create a Sage worksheet. 
 
 \heading{Print}
 Run \texttt{print a} or \texttt{print(a)} to print the value of \texttt{a}.  Python 3 only accept the second syntax.
+\columnbreak
 
 \heading{Data types}
 \begin{lwdes}
 \item[\texttt{int}] integers, such as \texttt{2}, \texttt{3}, \texttt{5}, $\ldots$\\
-in Sage \texttt{Integer} is more common
+\texttt{Integer} is more common in Sage 
 \item[\texttt{str}] strings, such as \texttt{"235"}
-\item[\texttt{bool}] boolean value, namely, \texttt{True} and \texttt{False}
+\item[\texttt{bool}] boolean values, namely, \texttt{True} and \texttt{False}
 \item[\texttt{tuple}] tuples, such as \texttt{(2,3,5)}
 \item[\texttt{list}] lists, such as \texttt{[2,3,5]}
-\item[\texttt{dict}] dictionaries, such as \\\texttt{\{"two":2,"three":3,"five":5\}} \\defined by \texttt{\{\textit{key}:\textit{value}\}}
+\item[\texttt{dict}] dictionaries, such as \\\texttt{\{"two":2, "three":3, "five":5\}} \\defined by \texttt{\{\textit{key}:\textit{value}\}}
 \item[\texttt{type(a)}] return the type of \texttt{a}
 \end{lwdes}
 
@@ -104,10 +106,11 @@ options: \texttt{>}, \texttt{>=}, \texttt{<}, \texttt{>=}, and \texttt{!=}\\
 \item[\texttt{**} or \texttt{\textasciicircum}] exponent, \texttt{**} for Python, \texttt{\textasciicircum} for Sage\\
 \texttt{2\textasciicircum3} returns 8
 \item[\texttt{\%}] modulus, \texttt{23\%4} returns \texttt{3}
-\item[\texttt{\slash\slash}] floor division, \texttt{15\slash\slash4} returns \texttt{5} 
+\item[\texttt{\slash\slash}] floor division, \texttt{23\slash\slash4} returns \texttt{5} 
 \end{lwdes}
+\columnbreak
 
-\heading{Layout}  Line breaks and indents are both sensitive in Python.  Conventionally, an indent is four spaces.  On CoCalc, I suggest go to ``Account'' and check the box of ``Spaces instead of tabs''.  If you put several commands in a line, then use semi-colons \texttt{;} to separate them.  Otherwise, semi-colons are optional.
+\heading{Layout}  Line breaks and indents are both sensitive in Python.  Conventionally, an indent is four spaces.  On CoCalc, I suggest go to ``Account'' and check the box of ``Spaces instead of tabs''.  If you put several commands in a line, then use semi-colons ``\texttt{;}'' to separate them.  Otherwise, semi-colons are optional.
 
 \heading{The \texttt{if} statement}  The following code decides the letter grade of the input \texttt{score}.
 
@@ -120,9 +123,9 @@ elif score >= 70 and score <80:
 elif score >= 60 and score <70:
     print "C";
 elif score >= 0 and score <60:
-    print "D"
+    print "D";
 else:
-    print "Input score not valid"
+    print "Input score not valid";
 \end{verbatim}
 
 \heading{The \texttt{for} loop}  The following code prints the positive integers less than or equal to $100$ that is a multiple of $5$ or $7$.
@@ -133,11 +136,11 @@ for i in range(1,101):
         print i;
 \end{verbatim}
 
-You may use \texttt{generator} or \texttt{list}
+You may use \texttt{generator} or \texttt{list} in a \texttt{for} loop.
 \begin{lwdes}
-\item[\texttt{range(b)}] return the list $0,1,\ldots,b-1$.
-\item[\texttt{range(a,b)}] return the list $a,a+1,\ldots,b-1$
-\item[\texttt{TreeIterator(n)}] a generator of trees on $n$ vertices, run the next line first\\
+\item[\texttt{range(b)}] the list $0,1,\ldots,b-1$.
+\item[\texttt{range(a,b)}] the list $a,a+1,\ldots,b-1$
+\item[\texttt{TreeIterator(n)}] the generator of trees on $n$ vertices, run the next line first\\
 \makebox[\linewidth][r]{\texttt{from sage.graphs.trees import TreeIterator}}
 \end{lwdes}
 
@@ -167,7 +170,7 @@ def power_sum(n,p,summand=False):
     return total;
 \end{verbatim}
 
-Thus, \verb|power_sum(10,1)| returns $55$.  The variable \texttt{summand} has a default value \texttt{False} so it is optional; when it is \texttt{True}, the function will print the summands.  For example, \verb|power_sum(10,2,True)| will print $1,4,9,\ldots$ and then return $385$.
+Thus, \verb|power_sum(10,1)| returns $55$.  The variable \texttt{summand} has a default value \texttt{False} so it is optional; when it is \texttt{True}, the function will print the summands.  For example, \verb|power_sum(10,2,True)| will print $1,4,9,\ldots,100$ and then return $385$.
 
 % *arg and **kwarg
 
@@ -175,7 +178,7 @@ Thus, \verb|power_sum(10,1)| returns $55$.  The variable \texttt{summand} has a 
 \begin{lwdes}
 \item[\texttt{f(a,b)}] return the value of the function \texttt{f} with given inputs \texttt{a} and \texttt{b}
 \item[\texttt{L[k]}] return the value of the $k$-th element in the list \texttt{L}
-\item[\texttt{D[k]}] return the value that corresponding the the key \texttt{k} in the dictionary \texttt{D}
+\item[\texttt{D[k]}] return the value that corresponds to the the key \texttt{k} in the dictionary \texttt{D}
 \end{lwdes}
 
 \heading{Shorthand and string formatting}
@@ -191,38 +194,43 @@ prints\hfill \verb|5+1=6|
 prints\hfill \verb|5+1=6|
 \end{obeylines}
 
-\heading{Sublist}
-Suppose \texttt{a=[1,2,3,4,5]}.
-\begin{lwdes}
-\item[\texttt{a[-2]}] returns \texttt{4}
-\item[\texttt{a[2:-2]}] returns \texttt{[2,3,4]}
-\end{lwdes}
+\heading{Operations on a list}
+Suppose \texttt{a=[0,1,2,3,4]}.
+\begin{obeylines}
+\verb|a[-2]|\hfill returns \verb|3|
+\verb|a[1:-2]|\hfill returns \verb|[1,2]|
+\verb|a[2:]+a[:2]|\hfill returns \verb|[2,3,4,0,1]|
+\end{obeylines}
+\columnbreak
 
 \heading{Matrix}
 To assign 
 \[M=\begin{bmatrix}0&1&2\\3&4&5\end{bmatrix},\]
 \begin{obeylines}
 the following two lines do the same work.
-\verb|M=matrix([[0,1,2],[3,4,5]])|
-\verb|M=matrix(2,range(6))|
+\verb|M=matrix([[0,1,2],[3,4,5]]);|
+\verb|M=matrix(2,range(6));|
 \end{obeylines}
 
-Suppose $M$ is this given matrix.
+\medskip
+Get information of a matrix \texttt{M} by the following ways.
 \begin{lwdes}
-\item[\texttt{M[i,j]}] returns the $i,j$-entry
-\item[\texttt{M[[0,1],[1,2]]}] returns the submatrix induced on rows indexed by \texttt{[0,1]} and columns indexed by \texttt{[1,2]}.
-\item[\texttt{M[[1],:]}] returns the row with index \texttt{1}
-\item[\texttt{M[:,[2]]}] returns the column with index \texttt{2}
+\item[\texttt{M[i,j]}] the $i,j$-entry
+\item[\texttt{M[[0,1],[1,2]]}] the submatrix induced on rows indexed by \texttt{[0,1]} and columns indexed by \texttt{[1,2]}.
+\item[\texttt{M[[1],:]}] the row with index \texttt{1}
+\item[\texttt{M[:,[2]]}] the column with index \texttt{2}
 \end{lwdes}
+\columnbreak
 
-\heading{Graph}  To assign $G=K_{2,3}$, each of the following three lines achieve the task, but only the first line assign the positions of the vertices.  (Try \texttt{G.show()} to see the difference.)
+\heading{Graph}  To assign $G=K_{2,3}$, each of the following three lines achieve the task, but only the first line assigns the positions of the vertices.  (Try \texttt{G.show()} to see the differences.)
 \begin{obeylines}
-\verb|G=graphs.CompleteBipartiteGraph(2,3)|
-\verb|G=Graph({0:[2,3,4],1:[2,3,4]})|
-\verb|G=Graph("D]o")|
+\verb|G=graphs.CompleteBipartiteGraph(2,3);|
+\verb|G=Graph({0:[2,3,4],1:[2,3,4]});|
+\verb|G=Graph("D]o");|
 \end{obeylines}
 Here \texttt{"D]o"} is the graph6 string of $K_{2,3}$.
 
+\medskip
 Use \href{http://pallini.di.uniroma1.it/}{\texttt{nauty}} to search graphs.  The following code prints the graph6 string for all connected graphs on $4$ vertices.
 \begin{verbatim}
 n=4;
@@ -230,11 +238,11 @@ for g in graphs.nauty_geng("%s -c"%n):
     print g.graph6_string();
 \end{verbatim}
 
-You may check the isomorphism by first giving them a ``standard'' labeling and then compare their string.  The following code check if \texttt{G} and \texttt{H} are isomorphic.
+You may check the isomorphism by first giving them a ``standard'' labeling and then compare their strings.  The following code checks if \texttt{G} and \texttt{H} are isomorphic.
 \begin{verbatim}
-stg_G=G.canonical_label().graph6_string();
-stg_H=H.canonical_label().graph6_string();
-stg_G==stg_H
+stgG=G.canonical_label().graph6_string();
+stgH=H.canonical_label().graph6_string();
+stgG==stgH;
 \end{verbatim}
 
 \end{multicols}
@@ -264,3 +272,5 @@ The second derivative of $f$ is
 Here's a plot of $f$ from $-1$ to $1$:
 
 \sageplot{plot(f, -1, 1)}
+ 
+%%% At the end, I didn't use SageTex...
