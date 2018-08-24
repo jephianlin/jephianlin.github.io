@@ -41,7 +41,7 @@ M.inverse?
 M.inverse??
 ︡809ba7df-fc90-4078-bb25-a090f3332a10︡
 ︠bf3fe100-27fc-49cc-bf26-accaf414c730︠
-### Exercise:  
+### Exercise:
 ###     Find the Taylor expansion of g at x=0.
 ###     [Hint: use f. tab to see available functions
 ###            or Google "taylor expansion, sage"]
@@ -58,8 +58,8 @@ show(X);
 ︡2d40ff72-2470-401d-bfca-e417d2d96cbb︡
 ︠67c7f251-914d-4898-bf1c-3b67d70327bds︠
 ### Exercise:
-###     Think of a math concept and search online 
-###     to see how to define it in Sage.  Then 
+###     Think of a math concept and search online
+###     to see how to define it in Sage.  Then
 ###     see the available functions under it.
 ###     (E.g., g=graphs.CompleteGraph(5);)
 
@@ -205,7 +205,7 @@ else:
 ︡396ccea7-760c-4f80-b5e2-9aefa03d9ed8︡
 ︠311f0390-ac1a-4f6e-8dba-63cee89a52b9︠
 ### for loop
-### this code prints all positive integers less than or equal to 100 
+### this code prints all positive integers less than or equal to 100
 ###  that is a multiple of 5 or 7
 
 for i in range(1,101):
@@ -214,7 +214,7 @@ for i in range(1,101):
 ︡d52ad279-9197-4383-b7ed-7362341940e2︡
 ︠43b16e39-94a4-4d66-b9e6-4d20145f456as︠
 ### while loop
-### this code is a primitive way to find 
+### this code is a primitive way to find
 ###  the least common multiple of 5 and 7
 
 i=1;
@@ -227,7 +227,7 @@ while True:
 ︡afe028b3-d9bb-4e3a-872c-189bf72866d9︡
 ︠c2f401c2-f41f-43dc-9654-37b22a5ef460︠
 ### Exercise:
-###    Print all integers from 1 to 100 
+###    Print all integers from 1 to 100
 ###    that is a multiple of 3, 5, or 7.
 ###    How many of them you get?  (Don't count by hand...)
 count=0;
@@ -276,7 +276,7 @@ power_sum(10,2,True);
 
 def f(x):
     return x^2;
-    
+
 f(3);
 ︡a07240de-cb57-484c-af9c-67c58fcccaa0︡
 ︠ca573335-aa27-4878-8906-b26728eeba66s︠
@@ -314,6 +314,21 @@ print a[2:]
 print a[:2]
 print a[2:]+a[:2]
 ︡d34a14ce-e169-4194-81be-52e1ae7cc6d3︡
+︠a2cf16de-dc4a-447e-8bd6-8ae23229bf2c︠
+### Exercise:
+###     Define a function f(n,l) with
+###     inputs: n an integer
+###             l a list
+###     return the number of integer k from 1,...,n
+###     such that k is a multiple of "some" of integer in l
+
+def f(n,l):
+    count=0;
+    for k in range(1,n+1):
+        if k%l[0]==0 or k%l[1]==0 or ... or k%l[len(l)]==0:
+            count+=1;
+    return count;
+︡1b605030-4979-4ce2-b544-d3ea58efd1bc︡
 ︠3a036f39-0e95-4467-9ef9-ad59d1617250s︠
 %latex
 \begin{tabular}{ccc}
