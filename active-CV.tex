@@ -17,6 +17,11 @@
 \definecolor{red}{rgb}{1,0,0}
 \def\red{\color{red}}
 
+%%% setting for Chinese characters
+\usepackage[T1]{fontenc}
+\usepackage{CJKutf8}
+\newcommand{\CJKEN}[1]{\begin{CJK}{UTF8}{bkai}#1\end{CJK}}
+
 %\linespread{1.2}
 \parindent=0pt
 
@@ -57,15 +62,15 @@ Kaohsiung 80424, Taiwan
 
 \begin{nobulletlist}
 \item \textbf{2017} Ph.D., Mathematics, Iowa State University (ISU)
-\begin{nobulletlist}
-\item Advisor: Leslie Hogben \& Steve Butler
-%\item Thesis: Variants of zero forcing and their applications to the minimum rank problem
-\end{nobulletlist}
+% \begin{nobulletlist}
+% \item Advisor: Leslie Hogben \& Steve Butler
+% \item Thesis: Variants of zero forcing and their applications to the minimum rank problem
+% \end{nobulletlist}
 \item \textbf{2011} M.S., Mathematics, National Taiwan University (NTU)
-\begin{nobulletlist}
-\item Advisor: Gerard Jennhwa Chang
-%\item Thesis: Applications of zero forcing number to the minimum rank problem
-\end{nobulletlist}
+% \begin{nobulletlist}
+% \item Advisor: Gerard Jennhwa Chang
+% \item Thesis: Applications of zero forcing number to the minimum rank problem
+% \end{nobulletlist}
 \item \textbf{2009} B.S., Mathematics, National Taiwan Normal University (NTNU)
 \end{nobulletlist}
 
@@ -78,6 +83,7 @@ Kaohsiung 80424, Taiwan
 \heading{EMPLOYMENT/FELLOWSHIPS}
 
 \begin{nobulletlist}
+\item \textbf{2019--2024} Young scholar fellowship (\CJKEN{愛因斯坦培植計畫}), Ministry of Science and Technology, Taiwan
 \item \textbf{2018--present} Assistant professor, National Sun Yat-sen University (NSYSU)
 \item \textbf{2017--2018} Post-doctoral fellow, University of Victoria (UVic)
 \item \textbf{2016 Spring} Wolfe fellowship, ISU
@@ -172,6 +178,40 @@ Zoc, loopEGR, sieving, GJ14, FCnumbers}
 \end{bibunit}
 \endgroup
 
+\item \textsc{Book chapters and others}
+
+\begingroup
+%%% Revise the bibliography environment to equipe etaremune.
+\makeatletter
+\long\def\thebibliography#1{%
+  %\section*{\refname}%
+  \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}
+  \settowidth{\dimen0}{\@biblabel{#1}}%
+  \setlength{\dimen2}{\dimen0}%
+  \addtolength{\dimen2}{\labelsep}
+  \sloppy
+  \clubpenalty 4000 
+  \@clubpenalty 
+  \clubpenalty 
+  \widowpenalty 4000
+  \sfcode `\.\@m
+  \renewcommand{\labelenumi}{\@biblabel{\theenumi}} % labels like [3], [2], [1]
+  \begin{etaremune}[labelwidth=\dimen0,leftmargin=\dimen2]\@openbib@code
+}
+\def\endthebibliography{\end{etaremune}}
+%%% This change the bibitem label to number period
+\def\@bibitem#1{%
+  \item \if@filesw\immediate\write\@auxout{\string\bibcite{#1}{\the\value{enumi}}}\fi\ignorespaces
+} %\the\value{enumi} tells the number of \cite{#1}
+\def\@biblabel#1{#1.} %This part make the label as arabic with a period.
+\makeatother
+
+\begin{bibunit}[unsrt]
+\nocite{Notices20, FYCGTC13}
+\putbib[./JLaTeX/AuthorA,./JLaTeX/JournalA,./JLaTeX/JepBib]
+\end{bibunit}
+\endgroup 
+
 \end{nobulletlist}
 
 
@@ -192,11 +232,13 @@ Zoc, loopEGR, sieving, GJ14, FCnumbers}
 \end{bibunit}
 \endgroup
 
+%%%WARNING
+% \newpage
 \item \textsc{Invited for Special Sessions/Mini Symposia}
 
 \begingroup
 \begin{bibunit}[unsrt]
-\nocite{ILAS2019, TWSIAM2019, AMTMS2018,
+\nocite{JMM2021, AMTMS2020, ILAS2019, TWSIAM2019, AMTMS2018,
 NCTU2018, WCG2018, SIAMDM2018, TWViet2018, SFU2018,
 Brandon2018, JMM2018, CP2017, ILAS2017, AMSMinneapolis2016, 
 TWSC2016, ILAS2016, AMSFargo2016, Boca2016, ILAS2014}
@@ -205,7 +247,7 @@ TWSC2016, ILAS2016, AMSFargo2016, Boca2016, ILAS2014}
 \endgroup
 
 %%%WARNING
-%\newpage
+% \newpage
 \item \textsc{Contributed}
 
 \begingroup
@@ -233,7 +275,8 @@ IMAGE2014, IMAAA2014, IMAPE2014, Sinica2009, APMO2004}
 \end{bibunit}
 \endgroup
 
-\newpage
+%%%WARNING
+% \newpage
 \heading{TEACHING WORKSHOPS}
 \begin{nobulletlist}
 \item \textbf{2020} Promoting EML in the University EML Environment (one-week workshop organised by British Council; with certification)
@@ -279,5 +322,5 @@ IMAGE2014, IMAAA2014, IMAPE2014, Sinica2009, APMO2004}
 %change to BibTex 2015-0914
 
 %original command: pdflatex -synctex=1 -interact=nonstopmode 'active-CV.tex'
-%sagemathcloud={"latex_command":"pdflatex active-CV.tex; bibtex active-CV.1.aux; bibtex active-CV.2.aux; bibtex active-CV.3.aux; bibtex active-CV.4.aux; bibtex active-CV.5.aux; bibtex active-CV.6.aux; pdflatex -synctex=1 -interact=nonstopmode 'active-CV.tex'"}
+%sagemathcloud={"latex_command":"pdflatex active-CV.tex; bibtex active-CV.1.aux; bibtex active-CV.2.aux; bibtex active-CV.3.aux; bibtex active-CV.4.aux; bibtex active-CV.5.aux; bibtex active-CV.6.aux; bibtex active-CV.7.aux; pdflatex -synctex=1 -interact=nonstopmode 'active-CV.tex'"}
 
